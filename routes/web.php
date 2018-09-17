@@ -26,6 +26,12 @@ Route::post('/offers', 'OffersController@store');
 Route::get('/offers/{offer}', 'OffersController@show');
 
 
+Route::get('/users/{user}', 'UsersController@show');
+
+Route::get('/users/{user}/companies', 'UsersController@companiesIndex');
+Route::get('/users/{user}/applicances', 'UsersController@applicancesIndex');
+
+
 Route::get('/register', 'RegistrationController@create')->name('register');
 Route::post('/register', 'RegistrationController@store');
 

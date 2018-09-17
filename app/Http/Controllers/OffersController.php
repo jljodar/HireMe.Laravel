@@ -12,7 +12,7 @@ class OffersController extends Controller
         // latest is a shortcut of:  orderBy('created_at', 'desc')
         $offers = Offer::latest()->get();
 
-        return view('offers.index', compact($offers));
+        return view('offers.index', compact('offers'));
     }
 
     public function create()

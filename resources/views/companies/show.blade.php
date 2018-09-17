@@ -1,11 +1,29 @@
-@extends('layouts.master')
+@extends('layouts.master', ['sectionTitle' => 'Companies'])
 
 @section('content')
-    <h2>{{ $company->name }}</h2>
-    <p>
-        {{ $company->industry }} 
-        <br>Boss: {{ $company->user->name }} 
-    </p>
+    <div class="card">
+        <div class="header">
+            <div class="row">
+                <div class="col-xs-2">
+                    <div class="icon-big text-center">
+                        <i class="ti-server"></i>
+                    </div>
+                </div>
+                <div class="col-xs-10">
+                    <h4 class="title">{{ $company->name }}</h4>
+                    <p class="category">
+                        {{ $company->industy }}
+                    </p>
+                    <p>
+                        Founder: <a href="/users/{{ $company->user->id }}">{{ $company->user->name }}</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="content">
+            {{ $company->description }}
+        </div>
+    </div>
 
     @if(count($offers) > 0)
         <h3>Open positions</h3>

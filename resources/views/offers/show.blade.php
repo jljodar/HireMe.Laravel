@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.master', ['sectionTitle' => 'Job Offer'])
 
 @section('content')
     <h2>{{ $offer->title }}</h2>

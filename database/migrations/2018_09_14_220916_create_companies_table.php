@@ -20,6 +20,7 @@ class CreateCompaniesTable extends Migration
 
             $table->string('name');
             $table->string('industry');
+            $table->text('description');
 
             // This add a "created_at" and "updated_at" fields in the database
             $table->timestamps();

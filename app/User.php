@@ -34,9 +34,8 @@ class User extends Authenticatable
         return $this->hasMany(Company::class);
     }
 
-    // We can create companies here because of the previous function that link users with companies
-    public function publish(Company $company) {
-        // We use save instead of create because we already have an existing instance of Company
-        $this->companies()->save($company);
+    public function applicances()
+    {
+        return $this->hasMany(Applicance::class);
     }
 }

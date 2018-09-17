@@ -1,9 +1,7 @@
-@extends('layouts.master')
+@extends('layouts.master', ['sectionTitle' => 'Register'])
 
 @section('content')
     <div class="col-md-8">
-        <h1>Sign in</h1>
-
         <form method="POST" action="/register">
             {{ csrf_field() }}
 
