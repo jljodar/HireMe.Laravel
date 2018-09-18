@@ -2,17 +2,17 @@
 
 @section('content')
     <div class="col-md-8">
-        <form method="POST" action="/login">
-            {{ csrf_field() }}
+        <form method="POST" action="{{action('SessionsController@create')}}">
+            @csrf
 
             <div class="form-group">
-                <label for="email">Email address:</label>
-                <input type="email" class="form-control" id="email" name="email">
+                <label for="username">Username:</label>
+                <input name="username" class="form-control">
             </div>
 
             <div class="form-group">
                 <label for="password">Password:</label>
-                <input type="password" class="form-control" id="password" name="password">
+                <input type="password" name="password" class="form-control">
             </div>
 
             <div class="form-group">

@@ -9,5 +9,5 @@ class Model extends Eloquent
 {
     // List of attributes that we don't want to be mass assignable
     //   It is the opposite of $fillable
-    protected $guarded = ['user_id'];
+    protected $guarded = ['created_at', 'updated_at', 'deleted_at', 'user_id'];
 }

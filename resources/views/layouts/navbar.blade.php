@@ -35,13 +35,13 @@
                             <li><a href="#">Another notification</a></li>
                             </ul>
                         </li>
-                        <li class="{{ isActive('/users\/[^\/]+\/applicances/i') ? 'active' : '' }}">
+                        <li class="{{ request()->is("users/" . auth()->user()->id . "/applicances") ? 'active' : '' }}">
                                 <a href="/users/{{ auth()->user()->id }}/applicances">
                               <i class="ti-clipboard"></i>
                               <p>{{ count(auth()->user()->applicances) }} Applicances</p>
                             </a>
                         </li>
-                        <li class="{{ isActive('/users\/[^\/]+\/companies/i') ? 'active' : '' }}">
+                        <li class="{{ request()->is("users/" . auth()->user()->id . "/companies") ? 'active' : '' }}">
                             <a href="/users/{{ auth()->user()->id }}/companies">
                               <i class="ti-briefcase"></i>
                               <p>{{ count(auth()->user()->companies) }} Companies</p>

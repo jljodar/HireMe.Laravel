@@ -9,7 +9,7 @@ class SessionsController extends Controller
     public function __construct()
     {
         // Only guests will be allow to go through the Sign In page
-        $this->middleware('guest', ['except' => 'destroy']);
+        $this->middleware('guest')->except(['destroy']);
     }
 
     public function create()
@@ -20,10 +20,10 @@ class SessionsController extends Controller
     public function store()
     {
         // Attempt to authenticate the user and password (and sign in)
-        if (! auth()->attempt(request(['email', 'password']))) {
+        if (! auth()->attempt(request(['username', 'password']))) {
             // Redirect back (to the same page)
             return back()->withErrors([
-                'message' => 'Email or password incorrect.'
+                'message' => 'Username or password incorrect.'
             ]);
         }
 

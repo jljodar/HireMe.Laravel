@@ -1,5 +1,5 @@
-<div class="col-lg-4 col-sm-6">
-    <a href="/companies/{{ $applicance->id }}">
+<div class="col-lg-6">
+    <a href="/applicance/{{ $applicance->id }}">
         <div class="card">
             <div class="content">
                 <div class="row">

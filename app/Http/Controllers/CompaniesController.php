@@ -11,7 +11,7 @@ class CompaniesController extends Controller
     public function __construct()
     {
         // Requiere authentication for majority of functions
-        $this->middleware('auth')->except(['index', 'show']);
+        $this->middleware('auth');
     }
 
 

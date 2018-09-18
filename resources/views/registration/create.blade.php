@@ -2,28 +2,30 @@
 
 @section('content')
     <div class="col-md-8">
-        <form method="POST" action="/register">
-            {{ csrf_field() }}
+        <form method="POST" action="{{action('RegistrationController@create')}}">
+            @csrf
 
-            <div class="form-group">
-                <label for="name">Name:</label>
-                <input type="text" class="form-control" id="name" name="name" required>
+            <div class="row">
+                <div class="col-md-3 form-group">
+                    <label for="username">Username:</label>
+                    <input type="text" name="username" class="form-control" required>
+                </div>
+                <div class="col-md-9 form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" name="email" class="form-control" required>
+                </div>
             </div>
 
-            <div class="form-group">
-                <label for="email">Email:</label>
-                <input type="email" class="form-control" id="email" name="email" required>
-            </div>
-    
-            <div class="form-group">
-                <label for="password">Password:</label>
-                <input type="password" class="form-control" id="password" name="password" required>
-            </div>
-
-            <div class="form-group">
-                <!-- "confirmed" flag in the validation needs an input named <AttributeYouWantToConfirm>_confirmed -->
-                <label for="password_confirmation">Password Confirmation:</label>
-                <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" required>
+            <div class="row">
+                <div class="col-md-6 form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" name="password" class="form-control" required>
+                </div>
+                <div class="col-md-6 form-group">
+                    {{-- "confirmed" flag in the validation needs an input named <Attribute>_confirmed --}}
+                    <label for="password_confirmation">Password Confirmation:</label>
+                    <input type="password" name="password_confirmation" class="form-control" required>
+                </div>
             </div>
 
             <div class="form-group">

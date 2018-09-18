@@ -1,4 +1,4 @@
-<div class="col-lg-4 col-sm-6">
+<div class="col-lg-6">
     <a href="/offers/{{ $offer->id }}">
         <div class="card">
             <div class="content">

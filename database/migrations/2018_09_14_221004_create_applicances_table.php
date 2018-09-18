@@ -21,6 +21,7 @@ class CreateApplicancesTable extends Migration
             
             $table->timestamp('viewed_at')->nullable();
             $table->timestamp('accepted_at')->nullable();
+            $table->timestamp('declined_at')->nullable();
             
             $table->timestamps();
         });

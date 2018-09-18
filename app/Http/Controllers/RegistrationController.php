@@ -7,6 +7,12 @@ use App\User;
 
 class RegistrationController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('guest');
+    }
+
+
     public function create()
     {
         return view('registration.create');
@@ -16,25 +22,26 @@ class RegistrationController extends Controller
     {
         // Validate the form
         $this->validate(request(), [
-            'name' => 'required',
+            'username' => 'required',
             'email' => 'required|email',
             'password' => 'required|confirmed',
         ]);
 
         // Create and save the user
         $user = User::create([
-            'name' => request('name'),
+            'username' => request('username'),
+            'name' => request('username'),
             'email' => request('email'),
             'password' => bcrypt(request('password')),
         ]);
 
-        // TODO This is not working, I had to bcrypt the password manually
-        //$user = User::create(request(['name', 'email', 'password']));
+        // This is not working, I had to bcrypt the password manually
+        //$user = User::create(request(['username', 'email', 'password']));
 
         // Sign in with the saved user (using the auth() helper function)
         auth()->login($user);
 
         // Redirect to home page
-        return redirect()->home();
+        return redirect('users/' . $user->id);
     }    
 }

@@ -19,8 +19,15 @@ class CreateCompaniesTable extends Migration
             $table->integer('user_id');
 
             $table->string('name');
-            $table->string('industry');
-            $table->text('description');
+            $table->string('industry')->nullable();
+            $table->text('description')->nullable();
+            
+            $table->string('address')->nullable();
+            $table->string('city')->nullable();
+            $table->string('country')->nullable();
+            $table->string('postal_code')->nullable();
+            
+            $table->unsignedInteger('profile_visits')->default(0);
 
             // This add a "created_at" and "updated_at" fields in the database
             $table->timestamps();

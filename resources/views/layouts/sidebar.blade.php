@@ -13,7 +13,7 @@ Tip 2: you can change the color of the active button using the data-active-color
 	</div>
 
 	<ul class="nav">
-		<li class="{{ request()->is('/') ? 'active' : '' }}">
+		<li class="{{ (request()->is('/') || request()->is('login') || request()->is('register')) ? 'active' : '' }}">
 			<a href="{{ route('home') }}">
 				<i class="ti-home"></i>
 				<p>Home</p>
