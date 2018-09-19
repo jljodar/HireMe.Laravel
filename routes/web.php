@@ -28,6 +28,7 @@ Route::get('/offers/{offer}', 'OffersController@show');
 
 
 Route::get('/users/{user}', 'UsersController@show');
+Route::patch('/users/{user}', 'UsersController@update');
 
 Route::get('/users/{user}/companies', 'UsersController@companiesIndex');
 Route::get('/users/{user}/applicances', 'UsersController@applicancesIndex');

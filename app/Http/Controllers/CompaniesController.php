@@ -10,7 +10,7 @@ class CompaniesController extends Controller
 {
     public function __construct()
     {
-        // Requiere authentication for majority of functions
+        // Requiere authentication
         $this->middleware('auth');
     }
 
@@ -33,20 +33,37 @@ class CompaniesController extends Controller
         //   If anything fails, it will redirect to the same page
         //   The errors will be avaible in blade thought $errors variable
         $this->validate(request(), [
-            'name' => 'required'
+            'name' => 'required',
+            'industry' => 'required',
+            'description' => 'required',
         ]);
 
-        // Create 
-        Company::create([
+        // Create a company with user_id
+        $company = new Company();
+        $company->user_id = auth()->id();
+        
+        // Fill the rest of the fields with the request
+        $company->fill(request()->all());
+
+        // Fill the rest of the fields with the request
+        //   We can't use the shorthand  $company->fill(request()->all());  because we need to provide default values for non-requiered fields
+        /*$company->fill([
             'name' => request('name'),
             'industry' => request('industry'),
-            'user_id' => auth()->id(),
-        ]);
+            'description' => request('description'),
+            
+            'address' => request('address', ''),
+            'city' => request('city', ''),
+            'country' => request('country', ''),
+            'postal_code' => request('postal_code', ''),
+        ]);*/
+
+        $company->save();
 
         /* Alternatively we could have created a publish method in our User and call it here for auto-asign the user_id
 
         auth()->user()->publish(
-            new Company(request(['name', 'industry']))
+            new Company(request(['name', 'industry', ...]))
         );*/
 
         // Redirect to home page
