@@ -45,7 +45,7 @@
                             </div>
                             <hr>
                             <div>
-                                <h5>{{ $user->last_seen_at }}<br><small>last seen</small></h5>
+                                <h5>{{ diffForHumans($user->last_seen_at) }}<br><small>last seen</small></h5>
                             </div>
                             <hr>
                             <div>

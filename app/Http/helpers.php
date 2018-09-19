@@ -1,9 +1,9 @@
 <?php
 
-if (! function_exists('isActive')) {
-    function isActive($pattern) {
-        $path = request()->path();
+use Carbon\Carbon;
 
-        return preg_match($pattern, $path);
+if (! function_exists('diffForHumans')) {
+    function diffForHumans($timestamp) {
+        return Carbon::createFromTimeStamp(strtotime($timestamp))->diffForHumans();
     }
 }

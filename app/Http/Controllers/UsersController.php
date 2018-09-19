@@ -18,6 +18,11 @@ class UsersController extends Controller
 
     public function show(User $user)
     {
+        // Increment profile visits
+        if(Auth::check() && Auth::user()->id != $user->id) {
+            $user->increment('profile_visits');
+        }
+
         return view('users.show', compact('user'));
     }
 
