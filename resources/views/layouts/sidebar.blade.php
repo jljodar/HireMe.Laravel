@@ -35,8 +35,9 @@ Tip 2: you can change the color of the active button using the data-active-color
 		<li class="divider"></li>
 
 		<li class="nav-text">
-				<img src="{{ asset('img/jose.jpg') }}" style="border-radius: 50%; padding-bottom: 10px; " />
-				Jose is a highly talented C#.NET and JavaScript developer with more than ten years of experience in the IT industry. He is passionate about programming and is proficient in multiple programming languages.
+			<h4 class="title">José L. Jódar Bornás</h4>
+			<img src="{{ asset('img/jose.jpg') }}" style="border-radius: 50%; padding-bottom: 10px; " />
+			José is a highly talented C#.NET and JavaScript developer with more than ten years of experience in the IT industry. He is passionate about programming and is proficient in multiple programming languages.
 		</li>
 		<li>
 			<a href="https://www.linkedin.com/in/jljodar/" target="_blank">

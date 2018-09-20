@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Carbon\Carbon;
 
 class UsersTableSeeder extends Seeder
 {
@@ -11,18 +12,29 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
+        $faker = Faker\Factory::create();
+
+        // Create my own user for quick testing
         $userJose = DB::table('users')->insert([
             'username' => 'jose',
-            'email' => 'jose@jose.com',
+            'email' => $faker->safeEmail,
             'password' => bcrypt('jose'),
-            'name' => 'jose',
-        ]);
-        
-        $userAnne = DB::table('users')->insert([
-            'username' => 'anne',
-            'email' => 'anne@anne.com',
-            'password' => bcrypt('anne'),
-            'name' => 'anne',
+            
+            'name' => 'José L.',
+            'last_name' => 'Jódar Bornás',
+            'address' => $faker->address,
+            'city' => $faker->city,
+            'country' => 'Spain',
+            'postal_code' => $faker->postcode,
+            
+            'about_me' => "José is a highly talented C#.NET and JavaScript developer with more than ten years of experience in the IT industry. He is passionate about programming and is proficient in multiple programming languages.",
+
+            'profile_visits' => rand(0, 200),
+            'last_seen_at' => Carbon::now(),
+
+            'remember_token' => str_random(10),
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
         ]);
 
         factory(App\User::class, 1856)->create();

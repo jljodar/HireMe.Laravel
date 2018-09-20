@@ -4,6 +4,8 @@ use Faker\Generator as Faker;
 use Carbon\Carbon;
 
 $factory->define(App\Company::class, function (Faker $faker) {
+    $createdDate = $faker->dateTimeBetween('-2 month', 'now');
+
     return [
         'user_id' => App\User::all()->random()->id,
         
@@ -16,7 +18,7 @@ $factory->define(App\Company::class, function (Faker $faker) {
         'country' => $faker->country,
         'postal_code' => $faker->postcode,
 
-        'created_at' => Carbon::now(),
-        'updated_at' => Carbon::now(),
+        'created_at' => $createdDate,
+        'updated_at' => $createdDate,
     ];
 });

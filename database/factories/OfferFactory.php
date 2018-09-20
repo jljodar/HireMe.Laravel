@@ -5,7 +5,8 @@ use Carbon\Carbon;
 
 $factory->define(App\Offer::class, function (Faker $faker) {
     $company = App\Company::all()->random();
-    $startDate = $faker->dateTimeBetween('-1 month', 'now');
+    $createdDate = $faker->dateTimeBetween($company->created_at, 'now');
+    $startDate = $createdDate;
 
     return [
         'user_id' => $company->user->id,
@@ -17,7 +18,7 @@ $factory->define(App\Offer::class, function (Faker $faker) {
         'started_at' => $startDate,
         'ended_at' => $faker->dateTimeInInterval($startDate, '+3 months'),
 
-        'created_at' => Carbon::now(),
-        'updated_at' => Carbon::now(),
+        'created_at' => $createdDate,
+        'updated_at' => $createdDate,
     ];
 });
