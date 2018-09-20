@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use Carbon\Carbon;
-//use Faker\Factory as Faker;
+use Faker\Factory as Faker;
 
 class UsersTableSeeder extends Seeder
 {
@@ -13,8 +13,6 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        /* TODO Heroku doesn't like Faker
-        
         $faker = Faker::create();
 
         // Create my own user for quick testing
@@ -38,7 +36,7 @@ class UsersTableSeeder extends Seeder
             'remember_token' => str_random(10),
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
-        ]);*/
+        ]);
 
         factory(App\User::class, 1856)->create();
 
