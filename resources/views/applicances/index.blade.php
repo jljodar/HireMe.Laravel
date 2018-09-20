@@ -18,6 +18,6 @@
     </div>
 
     <div class="text-center">
-        {{ $companies->appends(request()->except('page'))->links() }}
+        {{ $applicances->appends(request()->except('page'))->links() }}
     </div>
 @endsection

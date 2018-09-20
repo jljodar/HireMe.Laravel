@@ -1,17 +1,7 @@
 <?php
 
 use Faker\Generator as Faker;
-
-/*
-|--------------------------------------------------------------------------
-| Model Factories
-|--------------------------------------------------------------------------
-|
-| This directory should contain each of the model factory definitions for
-| your application. Factories provide a convenient way to generate new
-| model instances for testing / seeding your application's database.
-|
-*/
+use Carbon\Carbon;
 
 $factory->define(App\User::class, function (Faker $faker) {
     return [
@@ -28,6 +18,11 @@ $factory->define(App\User::class, function (Faker $faker) {
         
         'about_me' => $faker->paragraph,
 
+        'profile_visits' => rand(0, 200),
+        'last_seen_at' => Carbon::now(),
+
         'remember_token' => str_random(10),
+        'created_at' => Carbon::now(),
+        'updated_at' => Carbon::now(),
     ];
 });
