@@ -1,11 +1,15 @@
 @extends('layouts.master', ['sectionTitle' => 'Job Search'])
 
 @section('content')
-    <div class="col-sm-8 offer-main">
-        <div class="row">
-            @foreach ($offers as $offer)
+    <div class="row">
+        @foreach ($offers as $offer)
+            <div class="col-lg-6">
                 @include('offers.offer')
-            @endforeach
-        </div>
+            </div>
+        @endforeach
+    </div>
+    
+    <div class="text-center">
+        {{ $companies->appends(request()->except('page'))->links() }}
     </div>
 @endsection

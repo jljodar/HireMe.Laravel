@@ -52,14 +52,14 @@ class UsersController extends Controller
 
     public function companiesIndex(User $user)
     {
-        $companies = Company::where('user_id', $user->id)->get();
+        $companies = Company::where('user_id', $user->id)->paginate(10);
 
         return view('companies.index', compact('companies', 'user'));
     }
 
     public function applicancesIndex(User $user)
     {
-        $applicances = Applicance::where('user_id', $user->id)->get();
+        $applicances = Applicance::where('user_id', $user->id)->paginate(10);
 
         return view('applicances.index', compact('applicances', 'user'));
     }

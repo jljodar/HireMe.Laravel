@@ -17,7 +17,23 @@ class CompaniesController extends Controller
 
     public function index()
     {
-        $companies = Company::all();
+        $companies = new Company();
+
+        // Open positions filter
+        if(request()->query('openPositions') == "true") {
+            $companies = $companies->whereHas('offers', function ($query) {
+                $query->whereDate('offers.started_at', '<=', new \DateTime())
+                    ->whereDate('offers.ended_at', '>=', new \DateTime());
+            });
+        } else if(request()->query('noOpenPositions') == "true") {
+            $companies = $companies->whereDoesntHave('offers', function ($query) {
+                $query->whereDate('offers.started_at', '<=', new \DateTime())
+                    ->whereDate('offers.ended_at', '>=', new \DateTime());
+            });
+        }
+
+        // Paginate
+        $companies = $companies->paginate(10);
 
         return view('companies.index', compact('companies'));
     }

@@ -12,10 +12,19 @@
     <a href="/companies/create" class="btn btn-info btn-fill">Create a new company</a>
 
     <div class="row">
-        @foreach ($companies as $company)
-            <div class="col-lg-6">
-                @include('companies.company')
+        @foreach(array_chunk($companies->getCollection()->all(), 2) as $row)
+            <div class="row">
+                @foreach($row as $company)
+                    <div class="col-lg-6">
+                        @include('companies.company')
+                    </div>
+                @endforeach
             </div>
         @endforeach
+    </div>
+
+    <div class="text-center">
+        {{-- For filtering the results, we keep the request parameters in the URL --}}
+        {{ $companies->appends(request()->except('page'))->links() }}
     </div>
 @endsection

@@ -9,12 +9,12 @@
                     <div class="content">
                         <div class="author">
                             <img class="avatar border-white" src="{{ asset('/img/faces/face-2.jpg') }}" alt="...">
-                            <h4 class="title">{{ $user->name }}<br>
-                                <a href="#"><small>{{ '@' . $user->username }}</small></a>
+                            <h4 class="title">{{ $company->name }}<br>
+                                <a href="#"><small>{{ '@' . $company->username }}</small></a>
                             </h4>
                         </div>
                         {{-- Use the non-escaped output syntax for applying nl2br --}}
-                        <div class="description text-center">{!! nl2br($user->about_me) !!}</div>
+                        <div class="description text-center">{!! nl2br($company->about_me) !!}</div>
                     </div>
                 </div>
                 <div class="col-md-5 text-center">
@@ -27,11 +27,11 @@
                     </div>
                     <hr>
                     <div>
-                        <h5>{{ $user->last_seen_at->diffForHumans() }}<br><small>last seen</small></h5>
+                        <h5>{{ diffForHumans($company->last_seen_at) }}<br><small>last seen</small></h5>
                     </div>
                     <hr>
                     <div>
-                        <h5>{{ $user->profile_visits }}<br><small>profile visits</small></h5>
+                        <h5>{{ $company->profile_visits }}<br><small>profile visits</small></h5>
                     </div>
                 </div>
             </div>
@@ -43,7 +43,7 @@
                     @include('components.card', [
                         "icon" => "ti-clipboard",
                         "title" => "Applicances",
-                        "data" => $user->applicances->count(),
+                        "data" => $company->applicances->count(),
                     ])
                 </a>
             </div>
@@ -52,7 +52,7 @@
                     @include('components.card', [
                         "icon" => "ti-briefcase",
                         "title" => "Companies",
-                        "data" => $user->companies->count(),
+                        "data" => $company->companies->count(),
                     ])
                 </a>
             </div>
@@ -65,7 +65,7 @@
                 <h4 class="title">Edit Profile</h4>
             </div>
             <div class="content">
-                <form method="POST" action="{{action('UsersController@update', $user->id)}}">
+                <form method="POST" action="{{action('UsersController@update', $company->id)}}">
                     @csrf
                     {{-- We need to use the Form Method Spoofing because HTML forms do not support PATCH actions --}}
                     {{ method_field('PATCH') }}
@@ -74,13 +74,13 @@
                         <div class="col-md-8">
                             <div class="form-group">
                                 <label for="email">Email address</label>
-                                <input type="email" name="email" class="form-control border-input" value="{{ $user->email }}" readonly>
+                                <input type="email" name="email" class="form-control border-input" value="{{ $company->email }}" readonly>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="username">Username</label>
-                                <input type="text" name="username" class="form-control border-input" value="{{ $user->username }}" readonly>
+                                <input type="text" name="username" class="form-control border-input" value="{{ $company->username }}" readonly>
                             </div>
                         </div>
                     </div>
@@ -89,13 +89,13 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="name">First Name</label>
-                                <input type="text" name="name" class="form-control border-input" value="{{ $user->name }}">
+                                <input type="text" name="name" class="form-control border-input" value="{{ $company->name }}">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="last_name">Last Name</label>
-                                <input type="text" name="last_name" class="form-control border-input" value="{{ $user->last_name }}">
+                                <input type="text" name="last_name" class="form-control border-input" value="{{ $company->last_name }}">
                             </div>
                         </div>
                     </div>
@@ -104,7 +104,7 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label for="address">Address</label>
-                                <input type="text" name="address" class="form-control border-input" value="{{ $user->address }}">
+                                <input type="text" name="address" class="form-control border-input" value="{{ $company->address }}">
                             </div>
                         </div>
                     </div>
@@ -113,19 +113,19 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="city">City</label>
-                                <input type="text" name="city" class="form-control border-input" value="{{ $user->city }}">
+                                <input type="text" name="city" class="form-control border-input" value="{{ $company->city }}">
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="country">Country</label>
-                                <input type="text" name="country" class="form-control border-input" value="{{ $user->country }}">
+                                <input type="text" name="country" class="form-control border-input" value="{{ $company->country }}">
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="postal_code">Postal Code</label>
-                                <input type="text" name="postal_code" class="form-control border-input" value="{{ $user->postal_code }}">
+                                <input type="text" name="postal_code" class="form-control border-input" value="{{ $company->postal_code }}">
                             </div>
                         </div>
                     </div>
@@ -134,7 +134,7 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label for="about_me">About Me</label>
-                                <textarea name="about_me" rows="5" class="form-control border-input">{{ $user->about_me }}</textarea>
+                                <textarea name="about_me" rows="5" class="form-control border-input">{{ $company->about_me }}</textarea>
                             </div>
                         </div>
                     </div>

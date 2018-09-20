@@ -1,6 +1,13 @@
 @extends('layouts.master', ['sectionTitle' => 'Companies'])
 
 @section('content')
+    @if(auth()->user() && auth()->user()->id === $user->id)
+        {{-- One of your companies, you can edit data here --}}
+
+        @include('companies.yourCompany')
+    @else
+        {{-- Not your company --}}
+
     <div class="row">
         <div class="col-lg-8 col-md-7">
             <div class="card">
@@ -32,7 +39,9 @@
         
                 <div class="row">
                     @foreach ($offers as $offer)
-                        @include('offers.offer', ['mini' => true])
+                        <div class="col-lg-6">
+                            @include('offers.offer', ['mini' => true])
+                        </div>
                     @endforeach
                 </div>
             @else
@@ -61,7 +70,7 @@
                                 </div>
 
                                 <div class="col-xs-3 text-right">
-                                    <btn class="btn btn-sm btn-success btn-icon"><i class="fa fa-envelope"></i></btn>
+                                    <a class="btn btn-sm btn-success btn-icon"><i class="fa fa-envelope"></i></a>
                                 </div>
                             </div>
                         </li>
@@ -79,7 +88,7 @@
                                 </div>
 
                                 <div class="col-xs-3 text-right">
-                                    <btn class="btn btn-sm btn-success btn-icon"><i class="fa fa-envelope"></i></btn>
+                                    <a class="btn btn-sm btn-success btn-icon"><i class="fa fa-envelope"></i></a>
                                 </div>
                             </div>
                         </li>
@@ -97,7 +106,7 @@
                                 </div>
 
                                 <div class="col-xs-3 text-right">
-                                    <btn class="btn btn-sm btn-success btn-icon"><i class="fa fa-envelope"></i></btn>
+                                    <a class="btn btn-sm btn-success btn-icon"><i class="fa fa-envelope"></i></a>
                                 </div>
                             </div>
                         </li>

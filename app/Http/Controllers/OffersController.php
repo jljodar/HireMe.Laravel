@@ -16,7 +16,7 @@ class OffersController extends Controller
     public function index()
     {
         // latest is a shortcut of:  orderBy('created_at', 'desc')
-        $offers = Offer::latest()->get();
+        $offers = Offer::latest()->paginate(10);
 
         return view('offers.index', compact('offers'));
     }

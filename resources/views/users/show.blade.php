@@ -45,7 +45,7 @@
                             </div>
                             <hr>
                             <div>
-                                <h5>{{ diffForHumans($user->last_seen_at) }}<br><small>last seen</small></h5>
+                                <h5>{{ $user->last_seen_at->diffForHumans() }}<br><small>last seen</small></h5>
                             </div>
                             <hr>
                             <div>
@@ -55,9 +55,13 @@
                     </div>
                 </div>
                 
-                <div class="card row text-center">
-                    <div class="col-md-6"><h5>{{ $user->city }}<br><small>city</small></h5></div>
-                    <div class="col-md-6"><h5>{{ $user->country }}<br><small>country</small></h5></div>
+                <div class="card text-center">
+                    <div class="content">
+                        <div class="row">
+                            <div class="col-md-6"><h5>{{ $user->city }}<br><small>city</small></h5></div>
+                            <div class="col-md-6"><h5>{{ $user->country }}<br><small>country</small></h5></div>
+                        </div>
+                    </div>
                 </div>
             </div>
             

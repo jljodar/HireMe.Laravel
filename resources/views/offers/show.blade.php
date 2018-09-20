@@ -3,8 +3,8 @@
 @section('content')
     <h2>{{ $offer->title }}</h2>
     <p>
-        {{ $offer->company->name }}
-        <br>Contact: {{ $offer->user->name }}
+        Company: <a href="/companies/{{ $offer->company->id }}">{{ $offer->company->name }}</a>
+        <br>Contact: <a href="/users/{{ $offer->user->id }}">{{ $offer->user->name }}</a>
     </p>
 
     <p>

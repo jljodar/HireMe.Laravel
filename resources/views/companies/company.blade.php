@@ -15,8 +15,8 @@
             <div class="footer">
                 <hr>
                 <div class="stats">
-                    @if(count($company->offers) > 0)
-                        {{ count($company->offers) }} open positions
+                    @if(count($company->offers->where('isActive', true)) > 0)
+                        {{ count($company->offers->where('isActive', true)) }} open positions
                     @else
                         No open positions at the moment
                     @endif
