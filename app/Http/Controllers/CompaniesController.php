@@ -19,6 +19,16 @@ class CompaniesController extends Controller
     {
         $companies = new Company();
 
+        $companies = $companies->orderBy('name');
+
+        if(request()->query('filter')) {
+            $filters = explode(" ", request()->query('filter'));
+
+            foreach($filters as $filter) {
+                $companies = $companies->Where('name', 'LIKE', '%' . $filter . '%');
+            }
+        }
+
         // Open positions filter
         if(request()->query('openPositions') == "true") {
             $companies = $companies->whereHas('offers', function ($query) {

@@ -25,6 +25,7 @@ Route::get('/offers', 'OffersController@index');
 Route::get('/offers/create', 'OffersController@create');
 Route::post('/offers', 'OffersController@store');
 Route::get('/offers/{offer}', 'OffersController@show');
+Route::post('/offers/{offer}/applicances', 'OffersController@applicancesStore');
 
 
 Route::get('/users/{user}', 'UsersController@show');

@@ -16,3 +16,21 @@
 
 <!-- Paper Dashboard Core javascript and methods for Demo purpose -->
 <script src="{{ asset('js/paper-dashboard.js') }}"></script>
+
+<script type="text/javascript">
+  if(window.location.href.startsWith("http://hireme.laravel/offers/")) {
+    $(document).ready(function(){
+        $.notify({
+            icon: 'ti-pulse',
+            message: "This offers was applied for other users just a moment ago."
+          },{
+              type: 'warning',
+              timer: 4000,
+              placement: {
+                  from: 'top',
+                  align: 'center'
+              }
+          });
+    });
+  }
+</script>

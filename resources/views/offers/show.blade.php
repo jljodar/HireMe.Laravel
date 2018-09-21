@@ -27,7 +27,13 @@
                 {!! nl2br($offer->body) !!}
             </div>
             <hr>
-            <a class="btn">Apply</a>
+            <div class="text-center">
+                <form method="POST" action="{{ action('OffersController@applicancesStore', $offer) }}">
+                    @csrf
+
+                    <button type="submit" class="btn">Apply</button>
+                </form>
+            </div>
         </div>
     </div>
 @endsection

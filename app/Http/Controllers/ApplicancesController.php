@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Applicance;
+use App\Offer;
+
 class ApplicancesController extends Controller
 {
     public function __construct()
@@ -11,6 +14,4 @@ class ApplicancesController extends Controller
         $this->middleware('auth');
     }
 
-
-    
 }

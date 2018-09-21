@@ -1,30 +1,47 @@
-@php
-    $sectionTitle = 'Companies';
-
-    if(isset($user) && auth()->id()) {
-        $sectionTitle = (($user->id == auth()->id()) ? 'Your ' : $user->name . "'s ") . $sectionTitle;
-    }
-@endphp
-
-@extends('layouts.master', ['sectionTitle' => $sectionTitle])
+@extends('layouts.master', ['sectionTitle' => 'Copmanies'])
 
 @section('content')
     <a href="/companies/create" class="btn btn-info btn-fill">Create a new company</a>
 
-    <div class="row">
-        @foreach(array_chunk($companies->getCollection()->all(), 2) as $row)
-            <div class="row">
-                @foreach($row as $company)
-                    <div class="col-lg-6">
-                        @include('companies.company')
+    <div class="card">
+        <div class="header">
+            <h4 class="title">Search filters</h4>
+        </div>
+
+        <div class="card-content">
+            <form method="GET" action="{{action('CompaniesController@index')}}">
+                @csrf
+
+                <div class="row">
+                    <div class="col-lg-7">
+                        <div class="input-group search">
+                            <span class="input-group-addon"><i class="fa fa-search"></i></span>
+                            <input type="text" name="filter" class="form-control" placeholder="Search..." value="{{ request("filter") }}">
+                        </div>
                     </div>
-                @endforeach
+                    <div class="col-lg-5">
+                        <div class="btn-group" style="float: left; ">
+                            <button type="button" class="btn btn-default">Open positions</button>
+                            <button type="button" class="btn btn-default">Close</button>
+                            <button type="button" class="btn btn-default">All</button>
+                        </div>
+
+                        <button type="submit" class="btn btn-info btn-fill" style="float: right; ">Search</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                @include('companies.table', ['companies' => $companies])
             </div>
-        @endforeach
+        </div>
     </div>
 
     <div class="text-center">
-        {{-- For filtering the results, we keep the request parameters in the URL --}}
         {{ $companies->appends(request()->except('page'))->links() }}
     </div>
 @endsection

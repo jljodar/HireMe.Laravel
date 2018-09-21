@@ -1,58 +1,79 @@
 @extends('layouts.master', ['sectionTitle' => 'Companies'])
 
 @section('content')
-    @if(auth()->user() && auth()->user()->id === $company->user->id)
-        {{-- One of your companies, you can edit data here --}}
-
-        @include('companies.yourCompany')
-    @else
-        {{-- Not your company --}}
-
         <div class="row">
-            <div class="col-lg-8 col-md-7">
+            <div class="col-md-8">
                 <div class="card">
-                    <div class="header">
-                        <div class="row">
-                            <div class="col-xs-2">
-                                <div class="icon-big text-center">
-                                    <i class="ti-server"></i>
-                                </div>
-                            </div>
-                            <div class="col-xs-10">
-                                <h4 class="title">{{ $company->name }}</h4>
-                                <p class="category">
-                                    {{ $company->industy }}
-                                </p>
-                                <p>
-                                    Founder: <a href="/users/{{ $company->user->id }}">{{ $company->user->name }}</a>
-                                </p>
-                            </div>
+                    <div class="card-header">
+                        <div class="avatar-line-96">
+                            <img src="{{ asset('/img/faces/face-2.jpg') }}" />
+                            <h3 class="card-title">{{ $company->name }}</h3>
+                            <p>
+                                Industry: {{ $company->industry }}
+                                <br>Founder: <a href="/users/{{ $company->user->id }}">{{ $company->user->name }}</a>
+                            </p>
                         </div>
+                        <hr>
                     </div>
-                    <div class="content">
-                        {{ $company->description }}
+                    <div class="card-content">
+                        <h4 class="title">Description</h4>
+                        <br>
+                        {!! nl2br($company->description) !!}
                     </div>
                 </div>
-
-                @if(count($offers) > 0)
-                    <h3>Open positions</h3>
-            
-                    <div class="row">
-                        @foreach ($offers as $offer)
-                            <div class="col-lg-6">
-                                @include('offers.offer', ['mini' => true])
-                            </div>
-                        @endforeach
-                    </div>
-                @else
-                    <h3>No open positions at the moment</h3>
-                @endif
             </div>
 
-            <div class="col-lg-4 col-md-5">
+            <div class="col-md-4">
+                <div class="card">
+                    <a href="/users/{{ $company->user->id }}">
+                        <div class="header">
+                            <h4 class="title">Founder</h4>
+                        </div>
+                        <div class="card-content">
+                            <div class="avatar-line-64">
+                                <img src="{{ asset('/img/faces/face-2.jpg') }}" />
+                                <h3 class="card-title" style="margin-bottom: 5px; ">{{ $company->user->name }}</h3>
+                                <small>{{ '@' . $company->user->username }}</small>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                
                 <div class="card">
                     <div class="header">
-                        <h4 class="title">Team Members</h4>
+                        <h4 class="title">Address</h4>
+                    </div>
+                    <div class="card-content">
+                        <p>{{ $company->address }}</p>
+                        <p>{{ $company->city }}</p>
+                        <p>{{ $company->country }}</p>
+                        <p>{{ $company->postal_code }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="header">
+                        <h4 class="title">Open offers</h4>
+                    </div>
+
+                    @if(count($offers) > 0)
+                        @include('offers.table', ['offers' => $offers])
+                    @else
+                        <div class="card-content">
+                            No open offers at the moment
+                        </div>
+                    @endif
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="header">
+                        <h4 class="title">Employees</h4>
                     </div>
                     <div class="content">
                         <ul class="list-unstyled team-members">
@@ -60,7 +81,7 @@
                                 <div class="row">
                                     <div class="col-xs-3">
                                         <div class="avatar">
-                                            <img src="assets/img/faces/face-0.jpg" alt="Circle Image" class="img-circle img-no-padding img-responsive">
+                                            <img src="/img/faces/face-0.jpg" alt="Circle Image" class="img-circle img-no-padding img-responsive">
                                         </div>
                                     </div>
                                     <div class="col-xs-6">
@@ -78,7 +99,7 @@
                                 <div class="row">
                                     <div class="col-xs-3">
                                         <div class="avatar">
-                                            <img src="assets/img/faces/face-1.jpg" alt="Circle Image" class="img-circle img-no-padding img-responsive">
+                                            <img src="/img/faces/face-1.jpg" alt="Circle Image" class="img-circle img-no-padding img-responsive">
                                         </div>
                                     </div>
                                     <div class="col-xs-6">
@@ -96,7 +117,7 @@
                                 <div class="row">
                                     <div class="col-xs-3">
                                         <div class="avatar">
-                                            <img src="assets/img/faces/face-3.jpg" alt="Circle Image" class="img-circle img-no-padding img-responsive">
+                                            <img src="/img/faces/face-3.jpg" alt="Circle Image" class="img-circle img-no-padding img-responsive">
                                         </div>
                                     </div>
                                     <div class="col-xs-6">
@@ -115,5 +136,4 @@
                 </div>
             </div>
         </div>
-    @endif
 @endsection

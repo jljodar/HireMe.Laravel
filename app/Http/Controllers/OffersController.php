@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+
 use App\Offer;
+use App\Applicance;
 
 class OffersController extends Controller
 {
@@ -15,10 +17,35 @@ class OffersController extends Controller
 
     public function index()
     {
-        $offers = Offer::whereDate('offers.started_at', '<=', new \DateTime())
+        $offers = new Offer();
+
+        $offers = $offers->whereDate('offers.started_at', '<=', new \DateTime())
             ->whereDate('offers.ended_at', '>=', new \DateTime())
-            ->orderBy('started_at', 'desc')
-            ->paginate(10);
+            ->orderBy('started_at', 'desc');
+
+        if(request()->query('filter')) {
+            $filters = explode(" ", request()->query('filter'));
+
+            foreach($filters as $filter) {
+                // Construct an equivalent of  WHERE ... AND (x OR y) AND ...
+                $offers = $offers->Where(function($q) use ($filter) {
+                    $q->Where('title', 'LIKE', '%' . $filter . '%')
+                        ->orWhere('body', 'LIKE', '%' . $filter . '%');
+                });
+            }
+        }
+
+        if(request()->query('company-filter')) {
+            $offers = $offers->whereHas('company', function ($query) {
+                $filters = explode(" ", request()->query('company-filter'));
+
+                foreach($filters as $filter) {
+                    $query->Where('name', 'LIKE', '%' . $filter . '%');
+                }
+            });
+        }
+
+        $offers = $offers->paginate(10);
 
         return view('offers.index', compact('offers'));
     }
@@ -59,5 +86,22 @@ class OffersController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+
+    public function applicancesStore(Offer $offer)
+    {
+        // Create a company with user_id
+        $applicance = new Applicance();
+        $applicance->user_id = auth()->id();
+        $applicance->offer_id = $offer->id;
+        
+        // Fill the rest of the fields with the request
+        $applicance->fill(request()->all());
+
+        $applicance->save();
+
+        // Redirect to home page
+        return redirect('/users/' . auth()->id() . '/applicances');
     }
 }

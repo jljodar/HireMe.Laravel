@@ -111,7 +111,7 @@ ul.pagination > li.page-item.disabled > span {
 }
 
 
-/** Others **/
+/** Card **/
 
 .card .card-header {
   padding: 15px 20px 0 20px;
@@ -146,6 +146,8 @@ ul.pagination > li.page-item.disabled > span {
 }
 
 
+/** Avatar **/
+
 .avatar-line-64 {
   padding-left: 90px;
   position: relative;
@@ -168,6 +170,16 @@ ul.pagination > li.page-item.disabled > span {
   max-width: 96px;
 }
 
+
+/** Others **/
+
+div.input-group.search span.input-group-addon
+, div.input-group.search input {
+  background-color: #F3F2EE;
+}
+div.input-group.search input::placeholder {
+  color: rgb(202, 192, 179);
+}
 
 a:hover > .card {
   box-shadow: 0 4px 4px rgba(204, 197, 185, 0.5);
