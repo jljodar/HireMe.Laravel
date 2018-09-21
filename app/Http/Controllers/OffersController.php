@@ -15,8 +15,10 @@ class OffersController extends Controller
 
     public function index()
     {
-        // latest is a shortcut of:  orderBy('created_at', 'desc')
-        $offers = Offer::latest()->paginate(10);
+        $offers = Offer::whereDate('offers.started_at', '<=', new \DateTime())
+            ->whereDate('offers.ended_at', '>=', new \DateTime())
+            ->orderBy('started_at', 'desc')
+            ->paginate(10);
 
         return view('offers.index', compact('offers'));
     }

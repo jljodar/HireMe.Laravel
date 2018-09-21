@@ -2,11 +2,13 @@
 
 @section('content')
     <div class="row">
-        @foreach ($offers as $offer)
-            <div class="col-lg-6">
-                @include('offers.offer')
+        <div class="col-md-12">
+            <div class="card">
+                @include('offers.table', ['offers' => $offers])
             </div>
-        @endforeach
+        </div>
+    </div>
+
     </div>
     
     <div class="text-center">

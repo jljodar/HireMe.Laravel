@@ -8,12 +8,17 @@ $factory->define(App\Offer::class, function (Faker $faker) {
     $createdDate = $faker->dateTimeBetween($company->created_at, 'now');
     $startDate = $createdDate;
 
+    $body = [];
+    for($i = rand(3, 8); $i > 0 ; --$i) {
+        $body[] = $faker->paragraph(rand(3, 10));
+    }
+
     return [
         'user_id' => $company->user->id,
         'company_id' => $company->id,
         
         'title' => $faker->jobTitle,
-        'body' => $faker->paragraph(rand(3, 10)),
+        'body' => implode(PHP_EOL . PHP_EOL, $body),
 
         'started_at' => $startDate,
         'ended_at' => $faker->dateTimeInInterval($startDate, '+3 months'),
