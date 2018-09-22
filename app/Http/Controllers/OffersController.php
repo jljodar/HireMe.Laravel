@@ -70,7 +70,13 @@ class OffersController extends Controller
 
     public function show(Offer $offer)
     {
-        return view('offers.show', compact('offer'));
+        $applicance = Applicance::where('user_id', auth()->id())
+            ->where('offer_id', $offer->id)
+            ->first();
+
+        $alreadyApplied = ($applicance != null);
+
+        return view('offers.show', compact('offer', 'alreadyApplied'));
     }
 
     public function edit($id)

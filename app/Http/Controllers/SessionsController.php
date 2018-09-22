@@ -37,7 +37,7 @@ class SessionsController extends Controller
         // Sign out the user (using the auth() helper function)
         auth()->logout();
 
-        // Redirect to home page
-        return redirect()->home();
+        // Redirect to index page
+        return redirect('/');
     }
 }

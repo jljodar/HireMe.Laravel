@@ -28,11 +28,21 @@
             </div>
             <hr>
             <div class="text-center">
-                <form method="POST" action="{{ action('OffersController@applicancesStore', $offer) }}">
-                    @csrf
+                @if($alreadyApplied)
+                    <p>
+                        <button type="submit" class="btn" disabled>Apply</button>
+                    </p>
 
-                    <button type="submit" class="btn">Apply</button>
-                </form>
+                    <p>
+                        You already applied to this offer. Visit <a href="/users/{{ auth()->id() }}/applicances">Your applicances</a> to check the state.
+                    </p>
+                @else
+                    <form method="POST" action="{{ action('OffersController@applicancesStore', $offer) }}">
+                        @csrf
+                        
+                        <button type="submit" class="btn">Apply</button>
+                    </form>
+                @endif
             </div>
         </div>
     </div>

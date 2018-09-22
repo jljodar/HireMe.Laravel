@@ -11,9 +11,9 @@
 |
 */
 
-Route::get('/', 'HomeController@index')->name('home');
-// Laravel has /home route hardcoded, so we redirect it to our home
-Route::redirect('/home', '/', 301);
+Route::get('/', 'IndexController@index')->name('index');
+
+Route::get('/home', 'HomeController@index')->name('home');
 
 // All this routes could be simplified using  Route::resource('/companies', 'CompaniesController');
 Route::get('/companies', 'CompaniesController@index');

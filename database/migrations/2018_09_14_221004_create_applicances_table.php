@@ -24,6 +24,9 @@ class CreateApplicancesTable extends Migration
             $table->timestamp('declined_at')->nullable();
             
             $table->timestamps();
+
+            // Unique key
+            $table->unique(['user_id', 'offer_id']);
         });
     }
 
