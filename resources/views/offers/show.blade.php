@@ -14,7 +14,7 @@
                         </p>
                     </div>
                     <div class="col-sm-4 offers-extra" style="text-align: right; ">
-                        <p><span class="category">Posted </span>{{ $offer->started_at->diffForHumans() }}</p>
+                        <p><span class="category">Posted </span>{{ diffForHumansOnlyDays($offer->started_at) }}</p>
                         <p>{{ count($offer->applicances) }} applicances</p>
                         <div class="clear"></div>
                     </div>
@@ -39,8 +39,10 @@
                 @else
                     <form method="POST" action="{{ action('OffersController@applicancesStore', $offer) }}">
                         @csrf
-                        
+
                         <button type="submit" class="btn">Apply</button>
+
+                        @include('layouts.errors')
                     </form>
                 @endif
             </div>

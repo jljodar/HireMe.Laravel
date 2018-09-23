@@ -26,33 +26,20 @@ class OffersController extends Controller
         return view('offers.index', compact('offers'));
     }
 
-    public function create()
-    {
-        return view('offers.create');
-    }
-
-    public function store()
-    {
-        $this->validate(request(), [
-            'name' => 'required'
-        ]);
-
-        auth()->user()->publish(
-            new Offer(request(['name', 'industry']))
-        );
-
-        return redirect('/');
-    }
-
     public function show(Offer $offer)
     {
-        $applicance = Applicance::where('user_id', auth()->id())
-            ->where('offer_id', $offer->id)
-            ->first();
+        if(auth()->check() && auth()->id() == $offer->user_id) {
+            // Go to edit your own offer
+            return view('offers.edit', compact('offer'));
+        } else {
+            $applicance = Applicance::where('user_id', auth()->id())
+                ->where('offer_id', $offer->id)
+                ->first();
 
-        $alreadyApplied = ($applicance != null);
+            $alreadyApplied = ($applicance != null);
 
-        return view('offers.show', compact('offer', 'alreadyApplied'));
+            return view('offers.show', compact('offer', 'alreadyApplied'));
+        }
     }
 
     public function edit($id)
@@ -60,9 +47,27 @@ class OffersController extends Controller
         //
     }
 
-    public function update(Request $request, $id)
+    public function update(Offer $offer)
     {
-        //
+        // Validate the form
+        $this->validate(request(), [
+            'title' => 'required',
+            'body' => 'required',
+            'started_at' => 'required',
+            'ended_at' => 'required',
+        ]);
+
+        // Update and save
+        $offer->update([
+            'title' => request('title'),
+            'body' => request('body'),
+
+            'started_at' => request('started_at'),
+            'ended_at' => request('ended_at'),
+        ]);
+
+        // Redirect to the company's profile
+        return redirect('companies/' . $offer->company->id);
     }
 
     public function destroy($id)
@@ -73,17 +78,28 @@ class OffersController extends Controller
 
     public function applicancesStore(Offer $offer)
     {
-        // Create a company with user_id
+        // Create with relationships
         $applicance = new Applicance();
         $applicance->user_id = auth()->id();
         $applicance->offer_id = $offer->id;
-        
+
+        // Validate integrity constraint
+        if(Applicance::where('user_id', '=', $applicance->user_id)
+            ->where('offer_id', '=', $applicance->offer_id)
+            ->exists())
+        {
+            // Redirect back (to the same page)
+            return back()->withErrors([
+                'message' => 'You already applied to this offer.'
+            ]);
+        }
+
         // Fill the rest of the fields with the request
         $applicance->fill(request()->all());
 
         $applicance->save();
 
-        // Redirect to home page
+        // Redirect to user applicances
         return redirect('/users/' . auth()->id() . '/applicances');
     }
 }

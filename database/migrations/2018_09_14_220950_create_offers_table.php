@@ -21,9 +21,8 @@ class CreateOffersTable extends Migration
 
             $table->string('title');
             $table->text('body');
-            $table->timestamp('started_at')->nullable();
-            $table->timestamp('ended_at')->nullable();
-            $table->boolean('finished')->default(false);
+            $table->date('started_at')->nullable();
+            $table->date('ended_at')->nullable();
 
             $table->timestamps();
         });

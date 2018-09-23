@@ -16,7 +16,7 @@ $factory->define(App\Offer::class, function (Faker $faker) {
     return [
         'user_id' => $company->user->id,
         'company_id' => $company->id,
-        
+
         'title' => $faker->jobTitle,
         'body' => implode(PHP_EOL . PHP_EOL, $body),
 

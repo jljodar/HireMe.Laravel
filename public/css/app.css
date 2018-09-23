@@ -292,6 +292,10 @@ small,
   border: 1px solid #e8e7e3;
 }*/
 
+h3.card-title input {
+    font-size: 25px;
+}
+
 li.li-space {
   margin-top: 20px;
 }

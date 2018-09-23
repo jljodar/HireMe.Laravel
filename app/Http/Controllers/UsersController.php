@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Auth;
 use Illuminate\Http\Request;
 use App\User;
 use App\Company;
@@ -18,30 +17,34 @@ class UsersController extends Controller
 
     public function show(User $user)
     {
-        // Increment profile visits
-        if(Auth::check() && Auth::user()->id != $user->id) {
+        if(auth()->check() && auth()->id() == $user->id) {
+            // Go to edit your own profile
+            return view('users.edit', compact('user'));
+        } else {
+            // Increment profile visits
             $user->increment('profile_visits');
-        }
 
-        return view('users.show', compact('user'));
+            return view('users.show', compact('user'));
+        }
     }
 
     public function update(User $user)
     {
         // Validate the form
         $this->validate(request(), [
+            'name' => 'required'
         ]);
 
         // Update and save the user
         $user->update([
             'name' => request('name'),
             'last_name' => request('last_name', ''),
-            
+
             'address' => request('address', ''),
             'city' => request('city', ''),
             'country' => request('country', ''),
             'postal_code' => request('postal_code', ''),
-            
+
             'about_me' => request('about_me', ''),
         ]);
 

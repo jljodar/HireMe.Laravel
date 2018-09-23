@@ -30,14 +30,17 @@ Route::get('/profile/{username}', 'UsersController@show')->name('profile');
 Route::get('/users/{user}/companies', 'UsersController@companiesIndex');
 Route::get('/users/{user}/applicances', 'UsersController@applicancesIndex');
 
-Route::get('/offers', 'OffersController@index');
-Route::get('/offers/create', 'OffersController@create');
-Route::post('/offers', 'OffersController@store');
-Route::get('/offers/{offer}', 'OffersController@show');
-Route::post('/offers/{offer}/applicances', 'OffersController@applicancesStore');
-
 // All this routes could be simplified using  Route::resource('/companies', 'CompaniesController');
 Route::get('/companies', 'CompaniesController@index');
 Route::get('/companies/create', 'CompaniesController@create');
 Route::post('/companies', 'CompaniesController@store');
 Route::get('/companies/{company}', 'CompaniesController@show');
+Route::patch('/companies/{company}', 'CompaniesController@update');
+Route::get('/companies/{company}/offers/create', 'CompaniesController@offerCreate');
+Route::post('/companies/{company}/offers', 'CompaniesController@offerStore');
+
+Route::get('/offers', 'OffersController@index');
+Route::get('/offers/{offer}', 'OffersController@show');
+Route::patch('/offers/{offer}', 'OffersController@update');
+Route::get('/offers/{offer}/edit', 'OffersController@edit');
+Route::post('/offers/{offer}/applicances', 'OffersController@applicancesStore');

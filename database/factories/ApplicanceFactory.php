@@ -4,8 +4,22 @@ use Faker\Generator as Faker;
 use Carbon\Carbon;
 
 $factory->define(App\Applicance::class, function (Faker $faker) {
-    $offer = App\Offer::all()->random();
-    
+    // Use an array to keep track of the offer-user pairs generated, avoiding Integrity constraint violation
+    static $combinations;
+    $combinations = (($combinations) ? : []);
+    $actualCombination = [];
+
+    do {
+        $offer = App\Offer::all()->random();
+        $user = App\User::all()->random();
+
+        $actualCombination = [$offer->id, $user->id];
+
+    } while(in_array($actualCombination, $combinations));
+
+    $combinations[] = $actualCombination;
+
+
     $createdDate = $faker->dateTimeBetween($offer->started_at, 'now');
     $viewedDate = ((rand(0, 99) > 60) ? $faker->dateTimeBetween($createdDate, 'now') : null);
     $acceptedDate = null;
@@ -25,7 +39,7 @@ $factory->define(App\Applicance::class, function (Faker $faker) {
     $updatedDate = $acceptedDate ?? $declinedDate ?? $viewedDate ?? $createdDate;
 
     return [
-        'user_id' => App\User::all()->random()->id,
+        'user_id' => $user->id,
         'offer_id' => $offer->id,
 
         'viewed_at' => $viewedDate,

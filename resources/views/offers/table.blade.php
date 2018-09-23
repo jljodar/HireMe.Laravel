@@ -12,7 +12,7 @@
                                 <div class="category">{{ $offer->company->industry }}</div>
                             </div>
                             <div class="col-sm-4 datatable-offers-extra" style="text-align: right; ">
-                                <p><span class="category">Posted </span>{{ $offer->started_at->diffForHumans() }}</p>
+                                <p><span class="category">Posted </span>{{ diffForHumansOnlyDays($offer->started_at) }}</p>
                                 <p>{{ count($offer->applicances) }} applicances</p>
                                 <div class="clear"></div>
                             </div>

@@ -57,14 +57,14 @@
             <div class="col-md-8">
                 <div class="card">
                     <div class="header">
-                        <h4 class="title">Open offers</h4>
+                        <h4 class="title">Open positions</h4>
                     </div>
 
                     @if(count($activeOffers = $company->activeOffers()) > 0)
                         @include('offers.table', ['offers' => $activeOffers])
                     @else
                         <div class="card-content">
-                            No open offers at the moment
+                            No open positions at the moment
                         </div>
                     @endif
                 </div>
