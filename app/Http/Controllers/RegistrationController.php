@@ -35,13 +35,10 @@ class RegistrationController extends Controller
             'password' => bcrypt(request('password')),
         ]);
 
-        // This is not working, I had to bcrypt the password manually
-        //$user = User::create(request(['username', 'email', 'password']));
-
         // Sign in with the saved user (using the auth() helper function)
         auth()->login($user);
 
         // Redirect to home page
         return redirect('users/' . $user->id);
-    }    
+    }
 }

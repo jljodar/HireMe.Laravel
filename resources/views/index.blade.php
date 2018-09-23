@@ -22,7 +22,7 @@
 
                                 <div id="my-tab-content" class="tab-content">
                                     <div class="tab-pane active" id="login">
-                                        <form method="POST" action="{{action('SessionsController@create')}}">
+                                        <form method="POST" action="{{action('SessionsController@store')}}">
                                             @csrf
 
                                             <div class="card-content">
@@ -47,7 +47,7 @@
                                     </div>
 
                                     <div class="tab-pane" id="register">
-                                        <form method="POST" action="{{action('RegistrationController@create')}}">
+                                        <form method="POST" action="{{action('RegistrationController@store')}}">
                                             @csrf
 
                                             <div class="card-content">
