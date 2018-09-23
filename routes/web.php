@@ -30,6 +30,7 @@ Route::post('/offers/{offer}/applicances', 'OffersController@applicancesStore');
 
 Route::get('/users/{user}', 'UsersController@show');
 Route::patch('/users/{user}', 'UsersController@update');
+Route::get('/profile/{username}', 'UsersController@show')->name('profile');
 
 Route::get('/users/{user}/companies', 'UsersController@companiesIndex');
 Route::get('/users/{user}/applicances', 'UsersController@applicancesIndex');

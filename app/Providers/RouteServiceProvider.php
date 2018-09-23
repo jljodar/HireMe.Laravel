@@ -26,6 +26,11 @@ class RouteServiceProvider extends ServiceProvider
         //
 
         parent::boot();
+
+        // Explicit Route Binding - If you find {username} in a route, Laravel will know how to find the corresponding Eloquent Model
+        Route::bind('username', function ($value) {
+            return \App\User::where('username', $value)->first() ?? abort(404);
+        });
     }
 
     /**

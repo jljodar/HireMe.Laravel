@@ -10,9 +10,10 @@
                         <div class="author">
                             <img class="avatar border-white" src="{{ asset('/img/faces/face-2.jpg') }}" alt="...">
                             <h4 class="title">{{ $user->name }}<br>
-                                <a href="#"><small>{{ '@' . $user->username }}</small></a>
+                                <a href="/profile/{{ $user->username }}"><small>{{ '@' . $user->username }}</small></a>
                             </h4>
                         </div>
+
                         {{-- Use the non-escaped output syntax for applying nl2br --}}
                         <div class="description text-center">{!! nl2br($user->about_me) !!}</div>
                     </div>
@@ -58,7 +59,7 @@
             </div>
         </div>
     </div>
-    
+
     <div class="col-md-7">
         <div class="card">
             <div class="header">

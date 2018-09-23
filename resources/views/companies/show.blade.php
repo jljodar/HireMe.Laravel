@@ -10,7 +10,7 @@
                             <h3 class="card-title">{{ $company->name }}</h3>
                             <p>
                                 Industry: {{ $company->industry }}
-                                <br>Founder: <a href="/users/{{ $company->user->id }}">{{ $company->user->name }}</a>
+                                <br>Founder: <a href="/users/{{ $company->user->id }}">{{ $company->user->name . ' ' . $company->user->last_name }}</a>
                             </p>
                         </div>
                         <hr>
@@ -32,13 +32,13 @@
                         <div class="card-content">
                             <div class="avatar-line-64">
                                 <img src="{{ asset('/img/faces/face-2.jpg') }}" />
-                                <h3 class="card-title" style="margin-bottom: 5px; ">{{ $company->user->name }}</h3>
+                                <h3 class="card-title" style="margin-bottom: 5px; ">{{ $company->user->name . ' ' . $company->user->last_name }}</h3>
                                 <small>{{ '@' . $company->user->username }}</small>
                             </div>
                         </div>
                     </a>
                 </div>
-                
+
                 <div class="card">
                     <div class="header">
                         <h4 class="title">Address</h4>

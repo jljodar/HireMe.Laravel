@@ -115,6 +115,7 @@
                         <div class="card-content">
                             <ul>
                                 <li>Routing</li>
+                                <li>Explicit Route Binding</li>
                                 <li>Layouts</li>
                                 <li>Components</li>
                                 <li>Form Validation</li>
