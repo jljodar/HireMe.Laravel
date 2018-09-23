@@ -145,9 +145,9 @@ ul.pagination > li.page-item.disabled > span {
   min-height: 32px;
 }
 
-.card > a {
+/*.card > a {
   color: inherit;
-}
+}*/
 
 
 /** Avatar **/
@@ -246,6 +246,21 @@ ul.pagination > li.page-item.disabled > span {
 }
 
 
+/** Timeline **/
+
+ul.timeline-h:before {
+    top: 0;
+    bottom: 0;
+    position: absolute;
+    content: " ";
+    width: 3px;
+    background-color: #E3E3E3;
+    left: 50%;
+    margin-left: -1.5px;
+    background-color: #e8e7e3;
+}
+
+
 /** Others **/
 
 div.input-group.search span.input-group-addon
@@ -273,9 +288,9 @@ small,
   color: inherit;
 }
 
-.form-control {
+/*.form-control {
   border: 1px solid #e8e7e3;
-}
+}*/
 
 li.li-space {
   margin-top: 20px;

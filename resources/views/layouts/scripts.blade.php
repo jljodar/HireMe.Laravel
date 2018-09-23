@@ -21,7 +21,7 @@
     var message = "";
 
     if(window.location.pathname.startsWith("/offers/")) {
-        message = "This offers was applied for other users just a moment ago."
+        message = "Someone applied for this offer just a moment ago."
     } else if(window.location.pathname == "/home") {
         message = "58 new offers since your last login."
     }

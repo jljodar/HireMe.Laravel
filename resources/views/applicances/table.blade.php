@@ -26,7 +26,7 @@
                                                         <span class="alert-info">Viewed</span>
                                                         <br><small>({{ $applicance->viewed_at->diffForHumans() }})</small>
                                                     @else
-                                                        <span class="alert-info">Posted</span>
+                                                        <span class="alert-info">Received</span>
                                                         <br><small>({{ $applicance->created_at->diffForHumans() }})</small>
                                                     @endif
                                                 </p>

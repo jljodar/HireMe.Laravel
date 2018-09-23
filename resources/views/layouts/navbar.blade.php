@@ -18,7 +18,7 @@
                         <li class="{{ request()->is("users/" . auth()->user()->id) ? 'active' : '' }}">
                             <a href="/users/{{ auth()->user()->id }}">
                                 <i class="ti-user"></i>
-                                <p>{{ auth()->user()->name }}'s' Profile</p>
+                                <p>{{ auth()->user()->name }}'s Profile</p>
                             </a>
                         </li>
                         <li class="dropdown">

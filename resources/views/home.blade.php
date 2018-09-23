@@ -43,8 +43,11 @@
                     <h3 class="title">About this project</h3>
                 </div>
                 <div class="card-content">
-                    <p>Hire Me! is a Job Search Engine for demostrating my skills with PHP Laravel.</p>
-                    <p>This project was acomplised in a week and was my first contact with this framework. It follows all the community good conventions and I tried to use here as much Laravel features as I can.</p>
+                    <p>Hire Me! is a Job Search Engine to demostrate my skill in PHP Laravel.</p>
+                    <p>This project was accomplished in a week and was my first contact with this framework. It follows all good community conventions and best practices. I tried to use as many Laravel features as I could, including all the security related functions. You can find a list in Laravel Features section.</p>
+                    <p>The data you see here is mostly fake data. You can freely play with the application, new fake data is generated everyday.</p>
+                    <p>The complete source code can be found in <a href="https://github.com/jljodar/HireMe.Laravel" target="_blank">this GitHub public repository</a> and you can get in touch with my in <a href="https://www.linkedin.com/in/jljodar/">LinkedIn</a>.</p>
+                    <p>Enjoy!</p>
                 </div>
                 <div class="card-header">
                     <h3 class="title">Things you can do here:</h3>
@@ -92,18 +95,19 @@
                         </div>
                         <div class="card-content">
                             <ul>
-                                <li>PHP</li>
+                                <li>PHP 7.2.1</li>
                                 <li>Laravel 5.7.5</li>
                                 <li>Laravel Blade Templates</li>
                                 <li>Bootstrap</li>
-                                <li><a href="https://www.creative-tim.com/product/paper-dashboard" target="_blank">Paper Dashboard</a> bootstrap template</li>
+                                <li><a href="https://www.creative-tim.com/product/paper-dashboard" target="_blank">Paper Dashboard</a> bootstrap template <small>- with custom modifications</small></li>
                                 <li>jQuery</li>
 
                                 <li class="li-space">MySQL Database</li>
                                 <li>PostgreSQL Database <small>- for Heroku deployment</small></li>
                                 <li>Redis key-value storage</li>
 
-                                <li class="li-space">Heroku <small>- for the <a href="http://hire-me-laravel.herokuapp.com" target="_blank">live preview</a></small></li>
+                                <li class="li-space">XAMPP</li>
+                                <li>Heroku <small>- for the <a href="http://hire-me-laravel.herokuapp.com" target="_blank">live preview</a></small></li>
                             </ul>
                         </div>
                     </div>
@@ -127,7 +131,7 @@
                                 <li>CSRF Protection</li>
 
                                 <li class="li-space">Database Migrations</li>
-                                <li>Database Seeding</li>
+                                <li>Database Seeding using Faker</li>
                                 <li>Query Builder</li>
                                 <li>Pagination</li>
 
