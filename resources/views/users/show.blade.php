@@ -66,17 +66,21 @@
             </div>
             
             <div class="col-md-7">
-                <h3 class="title">{{ $user->name . "'s companies" }}</h3>
-
-                @if(count($user->companies) > 0)
-                    <div class="row">
-                        @foreach ($user->companies as $company)
-                            @include('companies.company')
-                        @endforeach
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="title">{{ $user->name . "'s companies" }}</h3>
                     </div>
-                @else
-                    <p>This user hasn't founded any company yet</p>
-                @endif
+
+                    @if(count($companies = $user->companies) > 0)
+                        <div class="datatable">
+                            @include('companies.table', ['companies' => $companies])
+                        </div>
+                    @else
+                        <div class="card-content">
+                            <p>This user hasn't founded any company yet</p>
+                        </div>
+                    @endif
+                </div>
             </div>
         </div>
     @endif

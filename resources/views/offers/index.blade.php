@@ -8,19 +8,17 @@
 
         <div class="card-content">
             <form method="GET" action="{{action('OffersController@index')}}">
-                @csrf
-
                 <div class="row">
                     <div class="col-lg-4">
                         <div class="input-group search">
                             <span class="input-group-addon"><i class="fa fa-search"></i></span>
-                            <input type="text" name="filter" class="form-control" placeholder="Search..." value="{{ request("filter") }}">
+                            <input type="text" name="search" class="form-control" placeholder="Search..." value="{{ request("search") }}">
                         </div>
                     </div>
                     <div class="col-lg-3">
                         <div class="input-group search">
                             <span class="input-group-addon"><i class="fa fa-search"></i></span>
-                            <input type="text" name="company-filter" class="form-control" placeholder="Company..." value="{{ request("company-filter") }}">
+                            <input type="text" name="company-search" class="form-control" placeholder="Company..." value="{{ request("company-search") }}">
                         </div>
                     </div>
                     <div class="col-lg-5">

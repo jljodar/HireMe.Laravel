@@ -18,19 +18,27 @@
 <script src="{{ asset('js/paper-dashboard.js') }}"></script>
 
 <script type="text/javascript">
-  if(window.location.href.startsWith("http://hireme.laravel/offers/")) {
-    $(document).ready(function(){
-        $.notify({
-            icon: 'ti-pulse',
-            message: "This offers was applied for other users just a moment ago."
-          },{
-              type: 'warning',
-              timer: 4000,
-              placement: {
-                  from: 'top',
-                  align: 'center'
-              }
-          });
-    });
-  }
+    var message = "";
+    
+    if(window.location.pathname.startsWith("/offers/")) {
+        message = "This offers was applied for other users just a moment ago."
+    } else if(window.location.pathname == "/home") {
+        message = "58 new offers since your last login."
+    }
+
+    if(message) {
+        $(document).ready(function(){
+            $.notify({
+                icon: 'ti-pulse',
+                message: message
+            },{
+                type: 'warning',
+                timer: 4000,
+                placement: {
+                    from: 'bottom',
+                    align: 'right'
+                }
+            });
+        });
+    }
 </script>

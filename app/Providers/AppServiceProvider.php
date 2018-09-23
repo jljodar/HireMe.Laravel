@@ -16,6 +16,11 @@ class AppServiceProvider extends ServiceProvider
     {
         // Added to avoid the max key length error in older versions of MySql
         Schema::defaultStringLength(191);
+
+        view()->composer('layouts.sidebar', function($view) {
+            $view->with('offersCount', \App\Offer::count())
+                ->with('companiesCount', \App\Company::count());
+        });
     }
 
     /**

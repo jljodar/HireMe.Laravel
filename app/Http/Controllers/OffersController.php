@@ -17,35 +17,11 @@ class OffersController extends Controller
 
     public function index()
     {
-        $offers = new Offer();
-
-        $offers = $offers->whereDate('offers.started_at', '<=', new \DateTime())
+        $offers = Offer::whereDate('offers.started_at', '<=', new \DateTime())
             ->whereDate('offers.ended_at', '>=', new \DateTime())
-            ->orderBy('started_at', 'desc');
-
-        if(request()->query('filter')) {
-            $filters = explode(" ", request()->query('filter'));
-
-            foreach($filters as $filter) {
-                // Construct an equivalent of  WHERE ... AND (x OR y) AND ...
-                $offers = $offers->Where(function($q) use ($filter) {
-                    $q->Where('title', 'LIKE', '%' . $filter . '%')
-                        ->orWhere('body', 'LIKE', '%' . $filter . '%');
-                });
-            }
-        }
-
-        if(request()->query('company-filter')) {
-            $offers = $offers->whereHas('company', function ($query) {
-                $filters = explode(" ", request()->query('company-filter'));
-
-                foreach($filters as $filter) {
-                    $query->Where('name', 'LIKE', '%' . $filter . '%');
-                }
-            });
-        }
-
-        $offers = $offers->paginate(10);
+            ->filter(request(['search', 'company-search']))
+            ->orderBy('started_at', 'desc')
+            ->paginate(10);
 
         return view('offers.index', compact('offers'));
     }

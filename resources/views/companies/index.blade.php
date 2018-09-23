@@ -1,8 +1,6 @@
 @extends('layouts.master', ['sectionTitle' => 'Copmanies'])
 
 @section('content')
-    <a href="/companies/create" class="btn btn-info btn-fill">Create a new company</a>
-
     <div class="card">
         <div class="header">
             <h4 class="title">Search filters</h4>
@@ -10,13 +8,11 @@
 
         <div class="card-content">
             <form method="GET" action="{{action('CompaniesController@index')}}">
-                @csrf
-
                 <div class="row">
                     <div class="col-lg-7">
                         <div class="input-group search">
                             <span class="input-group-addon"><i class="fa fa-search"></i></span>
-                            <input type="text" name="filter" class="form-control" placeholder="Search..." value="{{ request("filter") }}">
+                            <input type="text" name="search" class="form-control" placeholder="Search..." value="{{ request("search") }}">
                         </div>
                     </div>
                     <div class="col-lg-5">

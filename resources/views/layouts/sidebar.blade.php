@@ -22,13 +22,13 @@ Tip 2: you can change the color of the active button using the data-active-color
 		<li class="{{ request()->is('offers*') ? 'active' : '' }}">
 			<a href="/offers">
 				<i class="ti-rocket"></i>
-				<p>Job Search</p>
+				<p>Job Search <small>({{ $offersCount }})</small></p>
 			</a>
 		</li>
 		<li class="{{ request()->is('companies*') ? 'active' : '' }}">
 			<a href="/companies">
 				<i class="ti-briefcase"></i>
-				<p>Companies</p>
+				<p>Companies <small>({{ $companiesCount }})</small></p>
 			</a>
 		</li>
 

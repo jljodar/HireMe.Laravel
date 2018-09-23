@@ -17,33 +17,9 @@ class CompaniesController extends Controller
 
     public function index()
     {
-        $companies = new Company();
-
-        $companies = $companies->orderBy('name');
-
-        if(request()->query('filter')) {
-            $filters = explode(" ", request()->query('filter'));
-
-            foreach($filters as $filter) {
-                $companies = $companies->Where('name', 'LIKE', '%' . $filter . '%');
-            }
-        }
-
-        // Open positions filter
-        if(request()->query('openPositions') == "true") {
-            $companies = $companies->whereHas('offers', function ($query) {
-                $query->whereDate('offers.started_at', '<=', new \DateTime())
-                    ->whereDate('offers.ended_at', '>=', new \DateTime());
-            });
-        } else if(request()->query('noOpenPositions') == "true") {
-            $companies = $companies->whereDoesntHave('offers', function ($query) {
-                $query->whereDate('offers.started_at', '<=', new \DateTime())
-                    ->whereDate('offers.ended_at', '>=', new \DateTime());
-            });
-        }
-
-        // Paginate
-        $companies = $companies->paginate(10);
+        $companies = Company::filter(request(['search', 'openPositions', 'noOpenPositions']))
+            ->orderBy('name')
+            ->paginate(10);
 
         return view('companies.index', compact('companies'));
     }
@@ -99,9 +75,7 @@ class CompaniesController extends Controller
     // Thanks to the "Route Model Binding", Laravel automatically read the Company with the id provided in route
     public function show(Company $company)
     {
-        $offers = Offer::where('company_id', $company->id)->get();
-
-        return view('companies.show', compact('company', 'offers'));
+        return view('companies.show', compact('company'));
     }
 
     public function edit($id)

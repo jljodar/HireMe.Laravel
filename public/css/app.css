@@ -244,8 +244,13 @@ span.alert-info
   padding-right: 15px;
 }
 
-a:hover > .card {
-  box-shadow: 0 4px 4px rgba(204, 197, 185, 0.5);
+small,
+.card-user .author .title small {
+  color: #a9a9a9;
+}
+
+li.li-space {
+  margin-top: 20px;
 }
 
 .navbar-header .logo {

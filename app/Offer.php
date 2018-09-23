@@ -36,4 +36,29 @@ class Offer extends Model
     {
         return ($this->started_at->isPast() && $this->ended_at->isFuture());
     }
+
+
+    public function scopeFilter($query, $filters) {
+        if($search = $filters['search'] ?? "") {
+            $words = explode(" ", $search);
+
+            foreach($words as $word) {
+                // Construct an equivalent of  WHERE ... AND (x OR y) AND ...
+                $query->Where(function($q) use ($word) {
+                    $q->Where('title', 'LIKE', '%' . $word . '%')
+                        ->orWhere('body', 'LIKE', '%' . $word . '%');
+                });
+            }
+        }
+
+        if($companySearch = $filters['company-search'] ?? "") {
+            $query->whereHas('company', function ($query) use ($companySearch) {
+                $words = explode(" ", $companySearch);
+
+                foreach($words as $word) {
+                    $query->Where('name', 'LIKE', '%' . $word . '%');
+                }
+            });
+        }
+    }
 }

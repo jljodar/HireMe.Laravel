@@ -11,8 +11,8 @@
                                 <div class="category">{{ $company->industry }}</div>
 
                                 <div class="category">
-                                    @if(count($company->offers->where('isActive', true)) > 0)
-                                        {{ count($company->offers->where('isActive', true)) }} open positions
+                                    @if(($activeOffersCount = count($company->activeOffers())) > 0)
+                                        {{ $activeOffersCount }} open positions
                                     @else
                                         No open positions at the moment
                                     @endif

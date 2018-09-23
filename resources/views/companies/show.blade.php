@@ -60,8 +60,8 @@
                         <h4 class="title">Open offers</h4>
                     </div>
 
-                    @if(count($offers) > 0)
-                        @include('offers.table', ['offers' => $offers])
+                    @if(count($activeOffers = $company->activeOffers()) > 0)
+                        @include('offers.table', ['offers' => $activeOffers])
                     @else
                         <div class="card-content">
                             No open offers at the moment
