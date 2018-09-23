@@ -7,7 +7,7 @@
                 <span class="icon-bar bar2"></span>
                 <span class="icon-bar bar3"></span>
             </button>
-            <span class="logo" style="float: left; ">Hire Me! &nbsp; : </span>
+            <a href="/" class="logo" style="float: left; ">Hire Me! &nbsp; : </a>
             <a class="navbar-brand">{{ (isset($sectionTitle) ? $sectionTitle : '') }}</a>
         </div>
         <div class="collapse navbar-collapse">

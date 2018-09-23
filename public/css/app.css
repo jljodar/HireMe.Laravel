@@ -84,7 +84,7 @@ ul.pagination > li.page-item > span {
 
   height: 36px;
   min-width: 36px;
-  
+
   font-weight: 600;
   color: #66615B;
   text-align: center;
@@ -226,6 +226,26 @@ ul.pagination > li.page-item.disabled > span {
 }
 
 
+/** Nav Tabs **/
+
+.nav-tabs-navigation {
+    background-color: #9A9A9A;
+}
+.nav-tabs-navigation ul.nav-tabs li:not(.active) a {
+    color: white;
+}
+.nav-tabs-navigation ul.nav-tabs li:not(.active):hover a {
+    background-color: rgb(216, 215, 211);
+    border: 1px solid rgb(216, 215, 211);
+    color: #66615b;
+}
+
+.nav-tabs-navigation ul.nav-tabs.text-center li {
+    display: inline-block;
+    float: none;
+}
+
+
 /** Others **/
 
 div.input-group.search span.input-group-addon
@@ -247,6 +267,14 @@ span.alert-info
 small,
 .card-user .author .title small {
   color: #a9a9a9;
+}
+
+.card label {
+  color: inherit;
+}
+
+.form-control {
+  border: 1px solid #e8e7e3;
 }
 
 li.li-space {

@@ -19,7 +19,7 @@
 
 <script type="text/javascript">
     var message = "";
-    
+
     if(window.location.pathname.startsWith("/offers/")) {
         message = "This offers was applied for other users just a moment ago."
     } else if(window.location.pathname == "/home") {
@@ -35,9 +35,13 @@
                 type: 'warning',
                 timer: 4000,
                 placement: {
-                    from: 'bottom',
+                    from: 'top',
                     align: 'right'
-                }
+                },
+                offset: {
+                    x: 20,
+                    y: 90
+                },
             });
         });
     }
