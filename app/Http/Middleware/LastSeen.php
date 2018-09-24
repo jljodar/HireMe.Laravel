@@ -16,7 +16,7 @@ class LastSeen
      */
     public function handle($request, Closure $next)
     {
-        // Only if we are authenticated
+        // Only if the user is authenticated
         if(auth()->check()) {
             $user = auth()->user();
 

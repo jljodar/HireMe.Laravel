@@ -13,7 +13,7 @@
         <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav navbar-right">
                 @if (Route::has('login'))
-                    <!-- Check if we have a signed user -->
+                    <!-- Check if the user is authenticated -->
                     @auth
                         <li class="{{ request()->is("users/" . auth()->user()->id) ? 'active' : '' }}">
                             <a href="/users/{{ auth()->user()->id }}">

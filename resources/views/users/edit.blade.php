@@ -17,7 +17,7 @@
                                 </h4>
                             </div>
 
-                            {{-- Use the non-escaped output syntax for applying nl2br --}}
+                            {{-- Use the non-escaped output syntax to apply nl2br --}}
                             <div class="description text-center">{!! nl2br($user->about_me) !!}</div>
                         </div>
                     </div>

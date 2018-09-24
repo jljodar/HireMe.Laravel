@@ -34,14 +34,14 @@ class CompaniesController extends Controller
     {
         // Validate the request data
         //   If anything fails, it will redirect to the same page
-        //   The errors will be avaible in blade thought $errors variable
+        //   The errors will be available in Blade through $errors variable
         $this->validate(request(), [
             'name' => 'required',
             'industry' => 'required',
             'description' => 'required',
         ]);
 
-        // Create a with relationships
+        // Create with relationships
         $company = new Company();
         $company->user_id = auth()->id();
 
@@ -63,7 +63,7 @@ class CompaniesController extends Controller
 
         $company->save();
 
-        /* Alternatively we could have created a publish method in our User and call it here for auto-asign the user_id
+        /* Alternatively we could have created a publish method in our User and call it here to auto-assign the user_id
 
         auth()->user()->publish(
             new Company(request(['name', 'industry', ...]))
@@ -73,7 +73,7 @@ class CompaniesController extends Controller
         return redirect('/companies/' . $company->id);
     }
 
-    // Thanks to the "Route Model Binding", Laravel automatically read the Company with the id provided in route
+    // Thanks to the "Route Model Binding", Laravel automatically reads the Company with the id provided in route
     public function show(Company $company)
     {
         if(auth()->check() && auth()->id() == $company->user_id) {

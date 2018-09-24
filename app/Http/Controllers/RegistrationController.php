@@ -23,7 +23,7 @@ class RegistrationController extends Controller
     public function store()
     {
         // Validate the form
-        //   Using a custom validator for sending back an indicator to the view for showing Register tab instead of Login
+        //   Using a custom validator to send back an indicator to the view to show Register tab instead of Login
 
         $validator = Validator::make(request()->all(), [
             'username' => 'required',

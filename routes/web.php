@@ -30,7 +30,7 @@ Route::get('/profile/{username}', 'UsersController@show')->name('profile');
 Route::get('/users/{user}/companies', 'UsersController@companiesIndex');
 Route::get('/users/{user}/applicances', 'UsersController@applicancesIndex');
 
-// All this routes could be simplified using  Route::resource('/companies', 'CompaniesController');
+// All these routes could be simplified using  Route::resource('/companies', 'CompaniesController');
 Route::get('/companies', 'CompaniesController@index');
 Route::get('/companies/create', 'CompaniesController@create');
 Route::post('/companies', 'CompaniesController@store');

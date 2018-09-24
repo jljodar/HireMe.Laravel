@@ -67,7 +67,7 @@
                                                 </div>
 
                                                 <div class="form-group">
-                                                    {{-- "confirmed" flag in the validation needs an input named <Attribute>_confirmed --}}
+                                                    {{-- "confirmed" flag in form validation needs an input named <Field>_confirmed --}}
                                                     <label for="password_confirmation">Password Confirmation:</label>
                                                     <input type="password" name="password_confirmation" class="form-control" required>
                                                 </div>

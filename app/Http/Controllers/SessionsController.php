@@ -8,7 +8,7 @@ class SessionsController extends Controller
 {
     public function __construct()
     {
-        // Only guests will be allow to go through the Sign In page
+        // Only guests will be allowed to go through the Sign In page
         $this->middleware('guest')->except(['destroy']);
     }
 
