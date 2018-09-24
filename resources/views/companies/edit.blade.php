@@ -11,7 +11,7 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="avatar-line-96">
-                            <img src="{{ asset('/img/faces/face-2.jpg') }}" />
+                            <img src="{{ asset('/img/company.jpg') }}" />
                             <h3 class="card-title">
                                 <input type="text" name="name" class="form-control border-input" value="{{ $company->name }}">
                             </h3>

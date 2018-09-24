@@ -2,9 +2,9 @@
 
 @section('content')
     <div class="card text-center">
-        <br>
-        Go to <a href="/offers/">Job Search</a>, find one that suits you and apply for the position!
-        <br><br>
+        <div class="card-content">
+            Go to <a href="/offers/">Job Search</a>, find one that suits you and apply for the position!
+        </div>
     </div>
 
     <div>

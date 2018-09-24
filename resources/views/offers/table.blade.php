@@ -3,7 +3,7 @@
         <div class="datatable-row">
             <a href="/offers/{{ $offer->id }}">
                 <div class="avatar-line-64">
-                    <img src="{{ asset('/img/faces/face-2.jpg') }}" />
+                    <img src="{{ asset('/img/company.jpg') }}" />
                     <div>
                         <div class="row">
                             <div class="col-sm-8">

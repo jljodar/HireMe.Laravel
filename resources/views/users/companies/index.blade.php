@@ -2,9 +2,9 @@
 
 @section('content')
     <div class="card text-center">
-        <br>
-        <a href="/companies/create" class="btn btn-info btn-fill">Create a new company</a>
-        <br><br>
+        <div class="card-content">
+            <a href="/companies/create" class="btn btn-info btn-fill">Create a new company</a>
+        </div>
     </div>
 
     <div class="row">

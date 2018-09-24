@@ -6,15 +6,15 @@
                         <a href="/offers/{{ $applicance->offer->id }}">
                             <div class="card-content">
                                 <div class="avatar-line-64">
-                                    <img src="{{ asset('/img/faces/face-2.jpg') }}" />
+                                    <img src="{{ asset('/img/company.jpg') }}" />
                                     <div>
                                         <div class="row">
-                                            <div class="col-xs-8">
+                                            <div class="pull-left">
                                                 <h4 class="title">{{ $applicance->offer->title }}</h4>
                                                 <div class="category">{{ $applicance->offer->company->name }}</div>
                                                 <div class="category">{{ $applicance->offer->company->industry }}</div>
                                             </div>
-                                            <div class="col-xs-4 text-right">
+                                            <div class="pull-right">
                                                 <p>
                                                     @if($applicance->accepted_at)
                                                     <span class="alert-success">Accepted</span>

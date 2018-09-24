@@ -59,6 +59,9 @@
   .datatable .datatable-offers-extra p:first-child {
     float: left;
   }
+  .datatable .datatable-offers-extra p:nth-child(2) {
+    float: right;
+  }
 }
 
 
