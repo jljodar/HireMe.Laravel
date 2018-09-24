@@ -46,11 +46,11 @@ class User extends Authenticatable
 
     public function companies()
     {
-        return $this->hasMany(Company::class);
+        return $this->hasMany(Company::class)->orderBy('name');
     }
 
     public function applicances()
     {
-        return $this->hasMany(Applicance::class);
+        return $this->hasMany(Applicance::class)->latest();
     }
 }

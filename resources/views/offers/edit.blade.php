@@ -25,13 +25,13 @@
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label for="started_at">Start at</label>
+                                    <label for="started_at">Applications open from</label>
                                     <input type="date" name="started_at" class="form-control border-input" value="{{ $offer->started_at->toDateString() }}" require>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label for="ended_at">Finish at</label>
+                                    <label for="ended_at">Until</label>
                                     <input type="date" name="ended_at" class="form-control border-input" value="{{ $offer->ended_at->toDateString() }}" require>
                                 </div>
                             </div>
@@ -59,6 +59,38 @@
 
                         @include('layouts.errors')
                     </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="title">Applicants</h4>
+                    </div>
+
+                    @if (count($offer->applicances) > 0)
+                        <div class="datatable">
+                            @foreach ($offer->applicances as $applicance)
+                                <div class="datatable-row">
+                                    <div class="avatar-line-64">
+                                        <img src="{{ asset('/img/faces/face-2.jpg') }}" />
+                                        <div>
+                                            <h4 class="title">{{ $applicance->user->name }}</h4>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    Date: {{ $applicance->created_at->diffForHumans() }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                    @else
+                        Sorry, there are no applicants yet
+                    @endif
                 </div>
             </div>
         </div>

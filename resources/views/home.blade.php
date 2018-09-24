@@ -72,9 +72,9 @@
                                 <li>Search for companies</li>
                                 <li>View your companies</li>
                                 <li>Create a new company</li>
-                                <li style="text-decoration: line-through; ">Edit your companies</li>
-                                <li style="text-decoration: line-through; ">Post new offers for your companies</li>
-                                <li style="text-decoration: line-through; ">View the applicances for your posted offers</li>
+                                <li>Edit your companies</li>
+                                <li>Post new offers for your companies</li>
+                                <li>Edit your posted offers and view their applicances</li>
 
                                 <li class="li-space">Home dashboard with real data stats</li>
                                 <li>Notifications <small>- faked</small></li>
@@ -122,8 +122,10 @@
                                 <li>Explicit Route Binding</li>
                                 <li>Layouts</li>
                                 <li>Components</li>
-                                <li>Form Validation</li>
                                 <li>View Composers</li>
+                                <li>Form Validation</li>
+                                <li>Custom Form Validation<small>- for sending more data to the view</small></li>
+                                <li>Handling validation errors with multiple form in the same view using different MessageBags</li>
 
                                 <li class="li-space">Authentication</li>
                                 <li>Authorization</li>

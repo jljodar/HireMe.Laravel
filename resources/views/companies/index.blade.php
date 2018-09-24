@@ -16,13 +16,14 @@
                         </div>
                     </div>
                     <div class="col-lg-5">
-                        <div class="btn-group" style="float: left; ">
-                            <button type="button" class="btn btn-default">Open positions</button>
-                            <button type="button" class="btn btn-default">Close</button>
-                            <button type="button" class="btn btn-default">All</button>
+                        <div class="checkbox pull-left">
+                            <input type="checkbox" id="openPositions" name="openPositions" value="true" {{ (request('openPositions') == 'true' ? 'checked' : '') }} />
+                            <label for="openPositions">Only with open positions</label>
                         </div>
 
-                        <button type="submit" class="btn btn-info btn-fill" style="float: right; ">Search</button>
+                        <button type="submit" class="btn btn-info btn-fill pull-right">Search</button>
+
+                        <div class="clearfix"></div>
                     </div>
                 </div>
             </form>
@@ -32,7 +33,13 @@
     <div class="row">
         <div class="col-md-12">
             <div class="card">
-                @include('companies.table', ['companies' => $companies])
+                @if (count($companies) > 0)
+                    @include('companies.table', ['companies' => $companies])
+                @else
+                    <div class="card-content text-center">
+                        Sorry, no results were found
+                    </div>
+                @endif
             </div>
         </div>
     </div>

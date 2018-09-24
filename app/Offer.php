@@ -13,13 +13,13 @@ class Offer extends Model
         'started_at',
         'ended_at',
     ];
-    
+
 
     public function user()
     {
         return $this->belongsTo(User::class);
     }
-    
+
     public function company()
     {
         return $this->belongsTo(Company::class);
@@ -27,7 +27,7 @@ class Offer extends Model
 
     public function applicances()
     {
-        return $this->hasMany(Applicance::class);
+        return $this->hasMany(Applicance::class)->latest();
     }
 
 

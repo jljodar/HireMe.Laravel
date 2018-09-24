@@ -14,14 +14,14 @@
                                 <div class="nav-tabs-navigation">
                                     <div class="nav-tabs-wrapper">
                                         <ul id="tabs" class="nav nav-tabs text-center" data-tabs="tabs">
-                                            <li class="active"><a href="#login" data-toggle="tab">Login</a></li>
-                                            <li><a href="#register" data-toggle="tab">Register</a></li>
+                                            <li class="{{ ((\Session::has('backToRegister')) ? '' : ' active') }}"><a href="#login" data-toggle="tab">Login</a></li>
+                                            <li class="{{ ((\Session::has('backToRegister')) ? ' active' : '') }}"><a href="#register" data-toggle="tab">Register</a></li>
                                         </ul>
                                     </div>
                                 </div>
 
                                 <div id="my-tab-content" class="tab-content">
-                                    <div class="tab-pane active" id="login">
+                                    <div class="tab-pane{{ ((\Session::has('backToRegister')) ? '' : ' active') }}" id="login">
                                         <form method="POST" action="{{action('SessionsController@store')}}">
                                             @csrf
 
@@ -46,23 +46,34 @@
                                         </form>
                                     </div>
 
-                                    <div class="tab-pane" id="register">
+                                    <div class="tab-pane{{ ((\Session::has('backToRegister')) ? ' active' : '') }}" id="register">
                                         <form method="POST" action="{{action('RegistrationController@store')}}">
                                             @csrf
 
                                             <div class="card-content">
-                                                <label for="username">Username:</label>
-                                                <input type="text" name="username" class="form-control" required>
-                                                <label for="email">Email <small>&nbsp; (just fake it)</small>:</label>
-                                                <input type="email" name="email" class="form-control" required>
+                                                <div class="form-group">
+                                                    <label for="username">Username:</label>
+                                                    <input type="text" name="username" class="form-control" required>
+                                                </div>
 
-                                                <label for="password">Password:</label>
-                                                <input type="password" name="password" class="form-control" required>
-                                                {{-- "confirmed" flag in the validation needs an input named <Attribute>_confirmed --}}
-                                                <label for="password_confirmation">Password Confirmation:</label>
-                                                <input type="password" name="password_confirmation" class="form-control" required>
+                                                <div class="form-group">
+                                                    <label for="email">Email <small>&nbsp; (just fake it)</small>:</label>
+                                                    <input type="email" name="email" class="form-control" required>
+                                                </div>
 
-                                                @include('layouts.errors')
+                                                <div class="form-group">
+                                                    <label for="password">Password:</label>
+                                                    <input type="password" name="password" class="form-control" required>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    {{-- "confirmed" flag in the validation needs an input named <Attribute>_confirmed --}}
+                                                    <label for="password_confirmation">Password Confirmation:</label>
+                                                    <input type="password" name="password_confirmation" class="form-control" required>
+                                                </div>
+
+                                                @include('layouts.errors', ['errorBag' => $errors->registrationErrors])
+
                                             </div>
 
                                             <div class="card-footer text-center">

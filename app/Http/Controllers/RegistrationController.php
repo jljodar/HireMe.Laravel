@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Validator;
+
 use App\User;
 
 class RegistrationController extends Controller
@@ -21,11 +23,20 @@ class RegistrationController extends Controller
     public function store()
     {
         // Validate the form
-        $this->validate(request(), [
+        //   Using a custom validator for sending back an indicator to the view for showing Register tab instead of Login
+
+        $validator = Validator::make(request()->all(), [
             'username' => 'required',
             'email' => 'required|email',
             'password' => 'required|confirmed',
         ]);
+
+        if ($validator->fails()) {
+            return back()
+                ->withErrors($validator, 'registrationErrors')
+                ->with('backToRegister', true);
+        }
+
 
         // Create and save the user
         $user = User::create([

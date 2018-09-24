@@ -21,9 +21,9 @@
     var message = "";
 
     if(window.location.pathname.startsWith("/offers/")) {
-        message = "Someone applied for this offer just a moment ago."
+        message = "Someone applied for this offer just a moment ago. (fake)"
     } else if(window.location.pathname == "/home") {
-        message = "58 new offers since your last login."
+        message = "58 new offers since your last login. (fake)"
     }
 
     if(message) {
