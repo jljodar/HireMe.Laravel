@@ -43,10 +43,10 @@
                     <h3 class="title">About this project</h3>
                 </div>
                 <div class="card-content">
-                    <p>Hire Me! is a Job Search Engine to demostrate my skill in PHP Laravel.</p>
-                    <p>This project was accomplished in a week and was my first contact with this framework. It follows all good community conventions and best practices. I tried to use as many Laravel features as I could, including all the security related functions. You can find a list in Laravel Features section.</p>
-                    <p>The data you see here is mostly fake data. You can freely play with the application, new fake data is generated everyday.</p>
-                    <p>The complete source code can be found in <a href="https://github.com/jljodar/HireMe.Laravel" target="_blank">this GitHub public repository</a> and you can get in touch with my in <a href="https://www.linkedin.com/in/jljodar/">LinkedIn</a>.</p>
+                    <p>Hire Me! is a Job Search Engine to demonstrate my skill in PHP Laravel.</p>
+                    <p>This project was accomplished in a week and was my first contact with this framework. It follows all good community conventions and best practices. I tried to use as many Laravel features as I could, including all the security-related functions. You can find a list in the Laravel Features section.</p>
+                    <p>The data you see here is mostly fake data. You can freely play with the application, new fake data is generated every day. You can also log in as any profile using their username and "secret" as the password.</p>
+                    <p>The complete source code can be found in <a href="https://github.com/jljodar/HireMe.Laravel" target="_blank">this GitHub public repository</a> and you can get in touch with me in <a href="https://www.linkedin.com/in/jljodar/">LinkedIn</a>.</p>
                     <p>Enjoy!</p>
                 </div>
                 <div class="card-header">
@@ -107,6 +107,8 @@
                                 <li>Redis key-value storage</li>
 
                                 <li class="li-space">XAMPP</li>
+                                <li>Git</li>
+                                <li>GitHub</li>
                                 <li>Heroku <small>- for the <a href="http://hire-me-laravel.herokuapp.com" target="_blank">live preview</a></small></li>
                             </ul>
                         </div>

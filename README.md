@@ -1,11 +1,11 @@
 
 # HireMe! - The Job Search Engine
 
-Hire Me! is a Job Search Engine to demostrate my skill in PHP Laravel.
+Hire Me! is a Job Search Engine to demonstrate my skill in PHP Laravel.
 
-This project was accomplished in a week and was my first contact with this framework. It follows all good community conventions and best practices. I tried to use as many Laravel features as I could, including all the security related functions. You can find a list in Laravel Features section.
+This project was accomplished in a week and was my first contact with this framework. It follows all good community conventions and best practices. I tried to use as many Laravel features as I could, including all the security-related functions. You can find a list in the Laravel Features section.
 
-You can get in touch with my in [LinkedIn](https://www.linkedin.com/in/jljodar/).
+You can get in touch with me in [LinkedIn](https://www.linkedin.com/in/jljodar/).
 
 # Things you can do
 
@@ -27,8 +27,8 @@ You can get in touch with my in [LinkedIn](https://www.linkedin.com/in/jljodar/)
 * View your companies
 * Create a new company
 * Edit your companies
-* ~~Post new offers for your companies~~
-* ~~View the applicances for your posted offers~~
+* Post new offers for your companies
+* Edit your posted offers and view their applicances
 
 &nbsp;
 
@@ -54,6 +54,8 @@ You can get in touch with my in [LinkedIn](https://www.linkedin.com/in/jljodar/)
 &nbsp;
 
 * XAMPP
+* Git
+* GitHub
 * Heroku - for the [live preview](http://hire-me-laravel.herokuapp.com/).
 
 # Laravel Features
@@ -62,8 +64,10 @@ You can get in touch with my in [LinkedIn](https://www.linkedin.com/in/jljodar/)
 * Explicit Route Binding
 * Layouts
 * Components
-* Form Validation
 * View Composers
+* Form Validation
+* Custom Form Validation- for sending more data to the view
+* Handling validation errors with multiple form in the same view using different MessageBags
 
 &nbsp;
 
